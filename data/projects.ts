@@ -2,6 +2,9 @@ export type Block =
   | { type: "text"; heading?: string; body: string }
   | { type: "image"; src: string }
   | { type:"links"; items:{ label: string; url:string } []}
+  | { type: "section"; number: string; title: string }
+  | { type: "quote"; body: string }
+  | { type: "details"; items: { label: string; value: string }[] };
 
 export type Project = {
   slug: string;
@@ -17,33 +20,96 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-
   {
-    slug: "ohss",
-    title: "HSS Sea Scouts — Website Design & Development",
-    cover: "/projects/ohss/00.png",
-    tech: "Next.js · TypeScript · next-intl · Behold API · MUI · Tailwind CSS",
-    description:
-      "A (Swedish/English) website for a real client built as part of a team project",
-    blocks: [ 
-      {
-        type:"text",
-        heading: "Team project",
-        body: "Built with a small team as part of a class project for a real client. I helped design part of the web pages and part of the mobile layouts — picking up where a volunteer designer's initial mockups left off — and contributed to the frontend implementation, including bilingual routing with next-intl.",
-      },
-      { type: "image", src: "/projects/ohss/00.png" },
-      {
-        type: "text",
-        heading: "Features",
-        body: "The site included pages for Boats, Members, and Contact, along with full Swedish/English language switching and a live Instagram feed integration via the Behold API",
-      },
-      { type: "image", src: "/projects/ohss/02.png"},
-      { type: "image", src: "/projects/ohss/01.png"},
-    ],
-    live: "https://hss-repo.vercel.app/en",
+  slug: "ohss",
+  title: "HSS Sea Scouts — Website Design & Development",
+  cover: "/projects/ohss/00.png",
+  tech: "Next.js · TypeScript · next-intl · Behold API · MUI · Tailwind CSS",
+  description:
+    "A bilingual (Swedish/English) website for a Swedish sea scouting organization — built as a client team project, then independently redesigned and rebuilt on my own.",
+  blocks: [
+    {
+      type: "text",
+      heading: "Bridging the gap between mockup and momentum",
+      body: "During my frontend diploma, our team ran out of designed pages to build for a Swedish sea scouting organization. I spent one day designing the missing ones — layout and interaction logic first, polish never — so the team had something concrete to build against again.",
+    },
+    { type: "image", src: "/projects/ohss/05.png", caption: "The one page the team started with" },
+
+    { type: "section", number: "01.", title: "The Situation" },
+    {
+      type: "text",
+      body: "During my frontend diploma, our class was split into teams to build a website for a real client — a Swedish sea scouting organization. My team had a mix of developers and one person coordinating with the client throughout the project. A volunteer was helping with design, but about three weeks into the project, we only had a finished mockup for the homepage — nothing for the rest of the site.",
+    },
+    {
+      type: "quote",
+      body: "Don't wait for missing information — design or decide with what you actually have, and be clear about which parts are confirmed and which are your best read of the situation.",
+    },
+    {
+      type: "details",
+      items: [
+        { label: "Client", value: "Hässelby Strands Sjöscoutkår — a Swedish sea scouting group" },
+        { label: "My Role", value: "UI design (layout & interaction logic), frontend build" },
+        { label: "Platform", value: "Responsive web — desktop and mobile" },
+        { label: "Tools", value: "Figma for the missing pages" },
+        { label: "Challenge", value: "A design gap and a language gap, at the same time" },
+      ],
+    },
+     { type: "image", src: "/projects/ohss/00.png"},
+
+    
+
+    { type: "section", number: "02.", title: "The Task" },
+    {
+      type: "text",
+      body: "At that point, the team had built out everything the one available design covered, and there was nothing left to move forward on. I was asked to fill that gap, since I'd worked in UI design before switching into frontend.",
+    },
+
+    { type: "image", src: "/projects/ohss/02.png"},
+    {
+      type: "quote",
+      body: "I wasn't thrilled about it — I'd taken this program specifically to build my coding skills, not go back to design work — but without any layout or interaction logic for the remaining pages, the team was stuck.",
+    },
+
+    { type: "section", number: "03.", title: "The Action" },
+    {
+      type: "text",
+      body: "I spent about a day designing the missing pages myself — focusing purely on layout and interaction logic, not visual polish, since the goal was to give the team something concrete to build against, not to produce a finished design.",
+    },
+    {
+      type: "text",
+      body: "For direction, I didn't have a clear statement of the client's underlying problem — a lot of that came up in a meeting where my English wasn't strong enough yet to catch everything in real time. So I worked from what I could piece together afterward: a look at the site's existing structure, a quick look at a few comparable youth-organization and camp websites, and recurring feedback themes from later client reviews that kept touching on navigation and how content was organized.",
+    },
+    
+    { type: "image", src: "/projects/ohss/03.png", caption: "Mobile layouts drafted" },
+    {
+      type: "text",
+      body: "Based on that, my working assumption was that visitors — likely parents and teenage members, given who the organization serves — were probably having trouble finding what they needed quickly. That was my own inference from limited information, not something the client stated directly to me.",
+    },
+    {
+      type: "text",
+      body: "On the language side, I'll be honest — I couldn't follow everything in the client meetings at the time. When that happened, I'd check in with teammates afterward to fill in what I'd missed, rather than guessing.",
+    },
+
+    { type: "section", number: "04.", title: "The Result" },
+    {
+      type: "text",
+      body: "The day I spent on those designs gave the team a concrete basis to keep building, where before there was none — the pages I'd designed became what the rest of the team implemented.",
+    },
+    {
+      type: "quote",
+      body: "The project itself wasn't the one the client ultimately selected, but the experience taught me something I carry into how I work now: when you're missing information — whether it's a design gap or a language gap — the move isn't to wait for it, it's to make the most defensible judgment call you can with what you actually have, and be upfront about which parts are confirmed and which are your best read of the situation.",
+    },
+
+    { type: "section", number: "", title: "What the Team Received" },
+    { type: "image", src: "/projects/ohss/04.png", caption: "" },
+    { type: "image", src: "/projects/ohss/06.png", caption: "TDesktop pages — home, join, sections, about, boats, places and more" },
+
+  ],
+  live: "https://hss-repo.vercel.app/en",
   code: "https://github.com/SallyResch/hss-repo.git",
   figma: "https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=196-25805",
-  },
+},
+  
 
 
   {
