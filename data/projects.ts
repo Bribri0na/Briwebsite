@@ -1,6 +1,6 @@
 export type Block =
   | { type: "text"; heading?: string; body: string }
-  | { type: "image"; src: string }
+  | { type: "image"; src: string; caption?: string }
   | { type:"links"; items:{ label: string; url:string } []}
   | { type: "section"; number: string; title: string }
   | { type: "quote"; body: string }
