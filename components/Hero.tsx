@@ -11,7 +11,7 @@ const socials = [
     icon: FaLinkedinIn,
     label: "LinkedIn",
   },
-  { href: "https://github.com/Mosssi", icon: FaGithub, label: "GitHub" },
+  { href: "https://github.com/Bribri0na", icon: FaGithub, label: "GitHub" },
   {
     href: "https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN",
     icon: FaFigma,
