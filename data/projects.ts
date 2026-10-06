@@ -146,6 +146,7 @@ export const projects: Project[] = [
     },
     { type: "image", src: "/projects/solomate/2.gif", caption: "", size:"phone" },
   ],
+  live: "https://solotrip-nine.vercel.app/discover",
   code: "https://github.com/Bribri0na/soloTrip",
 },
 
