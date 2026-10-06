@@ -104,9 +104,14 @@ export default async function ProjectPage({
           }
 
           if (block.type === "image") {
+            const isPhone = block.size === "phone";
             return (
-              <figure key={i}>
-                <img src={block.src} alt={project.title} className="w-full" />
+              <figure key={i} className={isPhone ? "mx-auto" : "bg-black"}>
+                <img 
+                src={block.src} 
+                alt={project.title} 
+                className="w-full" 
+                />
                 {block.caption && (
                   <figcaption className="mt-2 text-center font-mono text-xs uppercase tracking-wide text-gray-500">
                     {block.caption}

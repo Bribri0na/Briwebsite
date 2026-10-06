@@ -1,6 +1,6 @@
 export type Block =
   | { type: "text"; heading?: string; body: string }
-  | { type: "image"; src: string; caption?: string }
+  | { type: "image"; src: string; caption?: string; size?: "full" | "phone" }
   | { type:"links"; items:{ label: string; url:string } []}
   | { type: "section"; number: string; title: string }
   | { type: "quote"; body: string }
@@ -110,7 +110,44 @@ export const projects: Project[] = [
   figma: "https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=196-25805",
 },
   
+{
+  slug: "solomate",
+  title: "SoloMate — A Buddy App for Solo Travellers",
+  cover: "/projects/solomate/cover.png",
+  tech: "Next.js 14 · TypeScript · Tailwind CSS",
+  description:
+    "A swipe-based app for short, genuine connections between solo travellers — designed with women's safety at its core.",
+  blocks: [
+    {
+      type: "text",
+      heading: "Connected, but not too close",
+      body: "SoloMate takes the familiar swipe mechanic and gives it a simpler purpose: short, genuine connections between solo travellers, designed with women's safety at its core.",
+    },
+    { type: "image", src: "/projects/solomate/1.gif", caption: "solomate", size:"phone" },
 
+    { type: "section", number: "01.", title: "The Problem" },
+    {
+      type: "text",
+      body: "Living in Stockholm, I noticed something on dating apps: many travellers just want company for a few days, but on a dating app it's hard to tell what anyone is really looking for. On the road, I also met many women who wanted a \"buddy\" to share a ride, a meal, or an afternoon walk, while still feeling safe.",
+    },
+    {
+      type: "details",
+      items: [
+        { label: "Role", value: "Concept, UX/UI design, frontend development" },
+        { label: "Stack", value: "Next.js 14, TypeScript, Tailwind CSS" },
+        { label: "Status", value: "In progress" },
+      ],
+    },
+
+    { type: "section", number: "02.", title: "The Idea" },
+    {
+      type: "quote",
+      body: "It's built for people who value their own space. Connected, but not too close. Join for a moment, then go your own way.",
+    },
+    { type: "image", src: "/projects/solomate/2.gif", caption: "", size:"phone" },
+  ],
+  code: "https://github.com/Bribri0na/soloTrip",
+},
 
   {
   slug: "briwebsite",
@@ -122,6 +159,9 @@ export const projects: Project[] = [
   code: "https://github.com/Mosssi/Briwebsite.git",
   externalOnly: true,
 },
+
+
+
 
   {
     slug: "hss",
@@ -150,6 +190,7 @@ export const projects: Project[] = [
     code: "https://github.com/Mosssi/rebuildHss.git",
     figma:"https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=0-1"
   },
+
   {
     slug: "zoo",
     title: "Zoo Website",
