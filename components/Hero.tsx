@@ -53,11 +53,11 @@ export default function Hero() {
       </p>
 
       <p className="mb-8 max-w-[1080px] text-[16px] font-mono text-gray-400">
-        I'm a UI Designer and Frontend Developer. I've worked on e-commerce, streaming, sports, and lifestyle products. Give me vague or incomplete input and I can turn it into something clear that actually ships.
-For several years I was a digital nomad — working remotely while traveling, designing multilingual apps for clients in different countries. I love travelling and experiencing different cultures.
-Now I'm based in Stockholm, studying Frontend Development at FutureGames, and looking for an internship.
+I'm a frontend developer and UI/UX designer based in Stockholm. I've designed e-commerce, live sports, video streaming and lifestyle products, and I'm good at turning vague or incomplete input into clear, shippable work.
 
+For several years I worked remotely as a freelance designer while travelling, collaborating with product teams across time zones in Chinese and English. Now I've settled in Stockholm, I'm studying frontend development at FutureGames, and I'm building my career here for the long term.
 
+Looking for a frontend LIA in Stockholm, 4 January – 21 May 2027.
       </p>
        
 

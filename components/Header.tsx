@@ -6,9 +6,11 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const links = [
+
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/#experience", label: "Experience" },
+  { href:"/cv", label:"CV"},
   { href: "/contacts", label: "Contacts" },
 ];
 

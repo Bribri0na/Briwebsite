@@ -1,5 +1,6 @@
 import SectionHeading from "./SectionHeading";
 import { experience } from "@/data/experience";
+import LinkButton from "./LinkButton"
 
 export default function Experience() {
   return (
@@ -8,31 +9,71 @@ export default function Experience() {
       <ul className="flex flex-col gap-4 pl-8">
         {experience.map((e, i) => (
           <li
-            key={e.role}
+            key={e.org + e.period}
             className="group relative -mx-4 rounded-lg border border-transparent p-4 transition duration-200 hover:border-white/10 hover:bg-white/5"
           >
-           
             <span className="absolute -left-[25px] top-[26px] z-10 h-3 w-3 rounded-full border-2 border-accent bg-black transition duration-200 group-hover:bg-accent" />
 
             {i !== experience.length - 1 && (
               <span className="absolute -left-[20px] top-[32px] bottom-[-16px] w-px bg-gray-700 transition duration-200 group-hover:bg-accent" />
             )}
 
-            <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
-              <span className="text-white transition group-hover:text-accent">
-                {e.role}
-              </span>
-              <span className="text-gray-300 md:text-right">
-                {e.period}
-                <em className="block not-italic text-gray-400">{e.org}</em>
-              </span>
-            </div>
-            <p className="mt-3 max-w-[760px] text-sm leading-relaxed text-gray-400">
-              {e.description}
-            </p>
+            {e.roles ? (
+              <>
+               
+                <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+                  <span className="text-white transition group-hover:text-accent">
+                    {e.org}
+                  </span>
+                  <span className="text-gray-300 md:text-right">{e.period}</span>
+                </div>
+
+               
+                <ul className="mt-5 flex flex-col gap-6">
+                  {e.roles.map((r) => (
+                    <li key={r.period} className="relative">
+                      <span className="absolute -left-[40.5px] top-[7px] z-10 h-2.5 w-2.5 rounded-full border-2 border-accent bg-black transition duration-200 group-hover:bg-accent" />
+                      <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
+                        <span className="text-gray-200">{r.role}</span>
+                        <span className="text-sm text-gray-400 md:text-right">
+                          {r.period}
+                        </span>
+                      </div>
+                      <p className="mt-2 max-w-[760px] text-sm leading-relaxed text-gray-400">
+                        {r.description}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <>
+                <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+                  <span className="text-white transition group-hover:text-accent">
+                    {e.role}
+                  </span>
+                  <span className="text-gray-300 md:text-right">
+                    {e.period}
+                    <em className="block not-italic text-gray-400">{e.org}</em>
+                  </span>
+                </div>
+                <p className="mt-3 max-w-[760px] text-sm leading-relaxed text-gray-400">
+                  {e.description}
+                </p>
+                
+              </>
+            )}
+            
           </li>
         ))}
       </ul>
+
+      <div className="mt-10 flex justify-center">
+        <LinkButton href="/cv">View CV</LinkButton>
+      </div>
+
+            
+          
     </section>
   );
 }

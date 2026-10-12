@@ -1,5 +1,6 @@
 import { FaLinkedinIn, FaGithub } from "react-icons/fa6";
 
+
 const socials = [
   {
     href: "https://www.linkedin.com/in/briannastrand",
