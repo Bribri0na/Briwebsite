@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Brianna — Portfolio
 
-## Getting Started
+Personal portfolio website of Brianna, UI/UX designer building production frontend skills in React, TypeScript and Next.js.
 
-First, run the development server:
+**Live:** [briwebsite.vercel.app](https://briwebsite.vercel.app)
+
+## Features
+
+- **Projects** — design and code work in one place, each with its own case-study page (live link, code, Figma)
+- **Experience** — timeline of work and education
+- **Skills** — tools, languages, databases and frameworks
+- **CV** — a CV page with a download option
+- **Contact** — contact form and social links (LinkedIn, GitHub)
+- **Data-driven content** — projects and experience are edited in data files, not in components
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) (App Router, Turbopack)
+- TypeScript
+- Tailwind CSS v4
+- react-icons
+- Formspree (contact form)
+- Deployed on [Vercel](https://vercel.com)
+
+## Getting started
 
 ```bash
+git clone https://github.com/Bribri0na/Briwebsite.git
+cd Briwebsite
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Before pushing, run a production build. It catches type errors that `npm run dev` tolerates:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/                    Routes (home, projects, projects/[slug], contacts, cv)
+components/             UI components (Header, Hero, Experience, ProjectCard, Footer, ...)
+data/projects.ts        Project list and case-study content
+data/experience.ts      Experience timeline
+lib/                    Helpers (e.g. CV data)
+public/projects/<slug>/ Images for each project
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Editing content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Add or edit a project:** `data/projects.ts`. Each project has a slug, title, cover, tech, description and a list of content blocks (text, image, section, quote, details, links). The first three projects in the array appear on the homepage.
+- **Edit experience:** `data/experience.ts`.
+- **Edit the intro text:** `components/Hero.tsx`.
+- **Project images:** put them in `public/projects/<slug>/` and reference them as `/projects/<slug>/<file>`. File names are case-sensitive on Vercel.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Pushing to `main` triggers an automatic deployment on Vercel. If a build fails, the previous version stays live, so check the build logs in Vercel.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contact
+
+- Email: briannatt007@gmail.com
+- GitHub: [github.com/Bribri0na](https://github.com/Bribri0na)
+- LinkedIn: [linkedin.com/in/briannastrand](https://www.linkedin.com/in/briannastrand)
