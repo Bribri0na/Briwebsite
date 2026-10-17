@@ -1,10 +1,12 @@
 export type Block =
   | { type: "text"; heading?: string; body: string }
   | { type: "image"; src: string; caption?: string; size?: "full" | "phone" }
-  | { type:"links"; items:{ label: string; url:string } []}
+  | { type: "links"; items: { label: string; url: string }[] }
   | { type: "section"; number: string; title: string }
   | { type: "quote"; body: string }
-  | { type: "details"; items: { label: string; value: string }[] };
+  | { type: "details"; items: { label: string; value: string }[] }
+  | { type:"video"; youtubeId:string; caption?: string }
+
 
 export type Project = {
   slug: string;
@@ -15,154 +17,244 @@ export type Project = {
   blocks: Block[];
   live?: string;
   code?: string;
-  figma?:string;
+  figma?: string;
   externalOnly?: boolean;
 };
 
 export const projects: Project[] = [
+  //gemu
   {
-  slug: "ohss",
-  title: "HSS Sea Scouts — Website Design & Development",
-  cover: "/projects/ohss/00.png",
-  tech: "Next.js · TypeScript · next-intl · Behold API · MUI · Tailwind CSS",
-  description:
-    "A bilingual (Swedish/English) website for a Swedish sea scouting organization — built as a client team project, then independently redesigned and rebuilt on my own.",
-  blocks: [
-    {
-      type: "text",
-      heading: "Bridging the gap between mockup and momentum",
-      body: "During my frontend diploma, our team ran out of designed pages to build for a Swedish sea scouting organization. I spent one day designing the missing ones — layout and interaction logic first, polish never — so the team had something concrete to build against again.",
-    },
-    { type: "image", src: "/projects/ohss/05.png", caption: "The one page the team started with" },
+    slug: "gemu",
+    title: "Gemu — A Three-Day Hackathon, Built by Four",
+    cover: "/projects/gemu/cover.png",
+    tech: "Next.js · TypeScript · Supabase · EmailJS · Discord API",
+    description:
+      "A three-day hackathon where a team of four built a website prototype for Gemu, a voxel game engine, and presented it to the client on the last day.",
+    blocks: [     
+      { type: "section", number: "", title: "How we worked together" },
+      {
+        type: "text",
+        body: "The hackathon ran Tuesday to Thursday. We spent the first two days building and the third presenting the result to the client. The GitHub repository holds 62 commits from four people, almost all written in the first two days, in parallel, on separate feature branches and merged into one main branch through pull requests.",
+      },
+      {
+        type: "text",
+        body: "We split the site along clear seams so that nobody was waiting for anybody else: design and pages, database and asset flow, Discord and community, and forms and email flows. When branches touched the same files, such as the global styles and the layout, the conflicts were resolved in the repository history and the work stayed in one codebase.",
+      },
 
-    { type: "section", number: "01.", title: "The Situation" },
-    {
-      type: "text",
-      body: "During my frontend diploma, our class was split into teams to build a website for a real client — a Swedish sea scouting organization. My team had a mix of developers and one person coordinating with the client throughout the project. A volunteer was helping with design, but about three weeks into the project, we only had a finished mockup for the homepage — nothing for the rest of the site.",
-    },
-    {
-      type: "quote",
-      body: "Don't wait for missing information — design or decide with what you actually have, and be clear about which parts are confirmed and which are your best read of the situation.",
-    },
-    {
-      type: "details",
-      items: [
-        { label: "Client", value: "Hässelby Strands Sjöscoutkår — a Swedish sea scouting group" },
-        { label: "My Role", value: "UI design (layout & interaction logic), frontend build" },
-        { label: "Platform", value: "Responsive web — desktop and mobile" },
-        { label: "Tools", value: "Figma for the missing pages" },
-        { label: "Challenge", value: "A design gap and a language gap, at the same time" },
-      ],
-    },
-     { type: "image", src: "/projects/ohss/00.png"},
+      { type: "video", youtubeId:"co1neZUUMr4", caption: "Futuregames Hackathon" },
 
-    
 
-    { type: "section", number: "02.", title: "The Task" },
-    {
-      type: "text",
-      body: "At that point, the team had built out everything the one available design covered, and there was nothing left to move forward on. I was asked to fill that gap, since I'd worked in UI design before switching into frontend.",
-    },
-
-    { type: "image", src: "/projects/ohss/02.png"},
-    {
-      type: "quote",
-      body: "I wasn't thrilled about it — I'd taken this program specifically to build my coding skills, not go back to design work — but without any layout or interaction logic for the remaining pages, the team was stuck.",
-    },
-
-    { type: "section", number: "03.", title: "The Action" },
-    {
-      type: "text",
-      body: "I spent about a day designing the missing pages myself — focusing purely on layout and interaction logic, not visual polish, since the goal was to give the team something concrete to build against, not to produce a finished design.",
-    },
-    {
-      type: "text",
-      body: "For direction, I didn't have a clear statement of the client's underlying problem — a lot of that came up in a meeting where my English wasn't strong enough yet to catch everything in real time. So I worked from what I could piece together afterward: a look at the site's existing structure, a quick look at a few comparable youth-organization and camp websites, and recurring feedback themes from later client reviews that kept touching on navigation and how content was organized.",
-    },
-    
-    { type: "image", src: "/projects/ohss/03.png", caption: "Mobile layouts drafted" },
-    {
-      type: "text",
-      body: "Based on that, my working assumption was that visitors — likely parents and teenage members, given who the organization serves — were probably having trouble finding what they needed quickly. That was my own inference from limited information, not something the client stated directly to me.",
-    },
-    {
-      type: "text",
-      body: "On the language side, I'll be honest — I couldn't follow everything in the client meetings at the time. When that happened, I'd check in with teammates afterward to fill in what I'd missed, rather than guessing.",
-    },
-
-    { type: "section", number: "04.", title: "The Result" },
-    {
-      type: "text",
-      body: "The day I spent on those designs gave the team a concrete basis to keep building, where before there was none — the pages I'd designed became what the rest of the team implemented.",
-    },
-    {
-      type: "quote",
-      body: "The project itself wasn't the one the client ultimately selected, but the experience taught me something I carry into how I work now: when you're missing information — whether it's a design gap or a language gap — the move isn't to wait for it, it's to make the most defensible judgment call you can with what you actually have, and be upfront about which parts are confirmed and which are your best read of the situation.",
-    },
-
-    { type: "section", number: "", title: "What the Team Received" },
-    { type: "image", src: "/projects/ohss/04.png", caption: "" },
-    { type: "image", src: "/projects/ohss/06.png", caption: "TDesktop pages — home, join, sections, about, boats, places and more" },
-
-  ],
-  live: "https://hss-repo.vercel.app/en",
-  code: "https://github.com/SallyResch/hss-repo.git",
-  figma: "https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=196-25805",
-},
-  
-{
-  slug: "solomate",
-  title: "SoloMate — A Buddy App for Solo Travellers",
-  cover: "/projects/solomate/cover.png",
-  tech: "Next.js 14 · TypeScript · Tailwind CSS",
-  description:
-    "A swipe-based app for short, genuine connections between solo travellers — designed with women's safety at its core.",
-  blocks: [
-    {
-      type: "text",
-      heading: "Connected, but not too close",
-      body: "SoloMate takes the familiar swipe mechanic and gives it a simpler purpose: short, genuine connections between solo travellers, designed with women's safety at its core.",
-    },
-    { type: "image", src: "/projects/solomate/1.gif", caption: "solomate", size:"phone" },
-
-    { type: "section", number: "01.", title: "The Problem" },
-    {
-      type: "text",
-      body: "Living in Stockholm, I noticed something on dating apps: many travellers just want company for a few days, but on a dating app it's hard to tell what anyone is really looking for. On the road, I also met many women who wanted a \"buddy\" to share a ride, a meal, or an afternoon walk, while still feeling safe.",
-    },
-    {
-      type: "details",
-      items: [
-        { label: "Role", value: "Concept, UX/UI design, frontend development" },
-        { label: "Stack", value: "Next.js 14, TypeScript, Tailwind CSS" },
-        { label: "Status", value: "In progress" },
-      ],
-    },
-
-    { type: "section", number: "02.", title: "The Idea" },
-    {
-      type: "quote",
-      body: "It's built for people who value their own space. Connected, but not too close. Join for a moment, then go your own way.",
-    },
-    { type: "image", src: "/projects/solomate/2.gif", caption: "", size:"phone" },
-  ],
-  live: "https://solotrip-nine.vercel.app/discover",
-  code: "https://github.com/Bribri0na/soloTrip",
-},
+      { type: "section", number: "", title: "Who did what" },
+      {
+        type: "text",
+        body: "Taken from the GitHub history of the repository. Commit counts exclude merge commits.",
+      },
+      {
+        type: "details",
+        items: [
+          
+          {
+            label: "Elmer — design & front end",
+            value:
+              "Created the graphic profile and design tokens, the site map and user flows, and the homepage wireframe, then built the first version of the website: Home, Assets and Community pages, optimised images and the engine demo video. 8 commits.",
+          },
+          {
+            label: "Seth — project setup & backend",
+            value:
+              "Initialised the Next.js project, set up Supabase (clients, generated types, database migrations), and built the asset submission flow: email-verified submission, rate limiting, zip-only uploads, a live-preview form, and the asset catalogue with price, file size, release date and ratings. Merged most of the team's pull requests. 17 commits.",
+          },
+          {
+            label: "Villiam — Discord & community",
+            value:
+              "Built the Discord bot and its API, connected the site to Discord, and made the Community page work with real posts and solved posts. 3 commits.",
+          },
+          {
+            label: "Brianna — forms & email flows",
+            value:
+              "Built the working forms: a 4-step engine access application that emails both Gemu and the applicant, game submissions with a pitch link, a newsletter with topic choices, and the Ask a question dialog. Added CRM tags and a Bootcamp invite to application emails, made the MCP integration visible on the homepage, and rewrote the page copy to match what the forms now do. Merged pull requests #5, #7, #11 and #12. 18 commits.",
+          },
+        ],
+      },
+    ],
+    live: "https://gemu-forums.vercel.app/",
+    code: "https://github.com/besethda/gemu-forums",
+  },
 
   {
-  slug: "briwebsite",
-  title: "Personal Portfolio Website",
-  cover: "/projects/briwebsite/01.png",
-  tech: "Next.js · TypeScript · Tailwind CSS",
-  description: "My own personal portfolio website — the one you're looking at right now.",
-  blocks: [],
-  code: "https://github.com/Mosssi/Briwebsite.git",
-  externalOnly: true,
-},
+    slug: "ohss",
+    title: "HSS Sea Scouts — Website Design & Development",
+    cover: "/projects/ohss/00.png",
+    tech: "Next.js · TypeScript · next-intl · Behold API · MUI · Tailwind CSS",
+    description:
+      "A bilingual (Swedish/English) website for a Swedish sea scouting organization — built as a client team project, then independently redesigned and rebuilt on my own.",
+    blocks: [
+      {
+        type: "text",
+        heading: "Bridging the gap between mockup and momentum",
+        body: "During my frontend diploma, our team ran out of designed pages to build for a Swedish sea scouting organization. I spent one day designing the missing ones — layout and interaction logic first, polish never — so the team had something concrete to build against again.",
+      },
+      {
+        type: "image",
+        src: "/projects/ohss/05.png",
+        caption: "The one page the team started with",
+      },
 
+      { type: "section", number: "01.", title: "The Situation" },
+      {
+        type: "text",
+        body: "During my frontend diploma, our class was split into teams to build a website for a real client — a Swedish sea scouting organization. My team had a mix of developers and one person coordinating with the client throughout the project. A volunteer was helping with design, but about three weeks into the project, we only had a finished mockup for the homepage — nothing for the rest of the site.",
+      },
+      {
+        type: "quote",
+        body: "Don't wait for missing information — design or decide with what you actually have, and be clear about which parts are confirmed and which are your best read of the situation.",
+      },
+      {
+        type: "details",
+        items: [
+          {
+            label: "Client",
+            value:
+              "Hässelby Strands Sjöscoutkår — a Swedish sea scouting group",
+          },
+          {
+            label: "My Role",
+            value: "UI design (layout & interaction logic), frontend build",
+          },
+          { label: "Platform", value: "Responsive web — desktop and mobile" },
+          { label: "Tools", value: "Figma for the missing pages" },
+          {
+            label: "Challenge",
+            value: "A design gap and a language gap, at the same time",
+          },
+        ],
+      },
+      { type: "image", src: "/projects/ohss/00.png" },
 
+      { type: "section", number: "02.", title: "The Task" },
+      {
+        type: "text",
+        body: "At that point, the team had built out everything the one available design covered, and there was nothing left to move forward on. I was asked to fill that gap, since I'd worked in UI design before switching into frontend.",
+      },
 
+      { type: "image", src: "/projects/ohss/02.png" },
+      {
+        type: "quote",
+        body: "I wasn't thrilled about it — I'd taken this program specifically to build my coding skills, not go back to design work — but without any layout or interaction logic for the remaining pages, the team was stuck.",
+      },
+
+      { type: "section", number: "03.", title: "The Action" },
+      {
+        type: "text",
+        body: "I spent about a day designing the missing pages myself — focusing purely on layout and interaction logic, not visual polish, since the goal was to give the team something concrete to build against, not to produce a finished design.",
+      },
+      {
+        type: "text",
+        body: "For direction, I didn't have a clear statement of the client's underlying problem — a lot of that came up in a meeting where my English wasn't strong enough yet to catch everything in real time. So I worked from what I could piece together afterward: a look at the site's existing structure, a quick look at a few comparable youth-organization and camp websites, and recurring feedback themes from later client reviews that kept touching on navigation and how content was organized.",
+      },
+
+      {
+        type: "image",
+        src: "/projects/ohss/03.png",
+        caption: "Mobile layouts drafted",
+      },
+      {
+        type: "text",
+        body: "Based on that, my working assumption was that visitors — likely parents and teenage members, given who the organization serves — were probably having trouble finding what they needed quickly. That was my own inference from limited information, not something the client stated directly to me.",
+      },
+      {
+        type: "text",
+        body: "On the language side, I'll be honest — I couldn't follow everything in the client meetings at the time. When that happened, I'd check in with teammates afterward to fill in what I'd missed, rather than guessing.",
+      },
+
+      { type: "section", number: "04.", title: "The Result" },
+      {
+        type: "text",
+        body: "The day I spent on those designs gave the team a concrete basis to keep building, where before there was none — the pages I'd designed became what the rest of the team implemented.",
+      },
+      {
+        type: "quote",
+        body: "The project itself wasn't the one the client ultimately selected, but the experience taught me something I carry into how I work now: when you're missing information — whether it's a design gap or a language gap — the move isn't to wait for it, it's to make the most defensible judgment call you can with what you actually have, and be upfront about which parts are confirmed and which are your best read of the situation.",
+      },
+
+      { type: "section", number: "", title: "What the Team Received" },
+      { type: "image", src: "/projects/ohss/04.png", caption: "" },
+      {
+        type: "image",
+        src: "/projects/ohss/06.png",
+        caption:
+          "TDesktop pages — home, join, sections, about, boats, places and more",
+      },
+    ],
+    live: "https://hss-repo.vercel.app/en",
+    code: "https://github.com/SallyResch/hss-repo.git",
+    figma:
+      "https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=196-25805",
+  },
+
+  {
+    slug: "solomate",
+    title: "SoloMate — A Buddy App for Solo Travellers",
+    cover: "/projects/solomate/cover.png",
+    tech: "Next.js 14 · TypeScript · Tailwind CSS",
+    description:
+      "A swipe-based app for short, genuine connections between solo travellers — designed with women's safety at its core.",
+    blocks: [
+      {
+        type: "text",
+        heading: "Connected, but not too close",
+        body: "SoloMate takes the familiar swipe mechanic and gives it a simpler purpose: short, genuine connections between solo travellers, designed with women's safety at its core.",
+      },
+      {
+        type: "image",
+        src: "/projects/solomate/1.gif",
+        caption: "solomate",
+        size: "phone",
+      },
+
+      { type: "section", number: "01.", title: "The Problem" },
+      {
+        type: "text",
+        body: 'Living in Stockholm, I noticed something on dating apps: many travellers just want company for a few days, but on a dating app it\'s hard to tell what anyone is really looking for. On the road, I also met many women who wanted a "buddy" to share a ride, a meal, or an afternoon walk, while still feeling safe.',
+      },
+      {
+        type: "details",
+        items: [
+          {
+            label: "Role",
+            value: "Concept, UX/UI design, frontend development",
+          },
+          { label: "Stack", value: "Next.js 14, TypeScript, Tailwind CSS" },
+          { label: "Status", value: "In progress" },
+        ],
+      },
+
+      { type: "section", number: "02.", title: "The Idea" },
+      {
+        type: "quote",
+        body: "It's built for people who value their own space. Connected, but not too close. Join for a moment, then go your own way.",
+      },
+      {
+        type: "image",
+        src: "/projects/solomate/2.gif",
+        caption: "",
+        size: "phone",
+      },
+    ],
+    live: "https://solotrip-nine.vercel.app/discover",
+    code: "https://github.com/Bribri0na/soloTrip",
+  },
+
+  {
+    slug: "briwebsite",
+    title: "Personal Portfolio Website",
+    cover: "/projects/briwebsite/01.png",
+    tech: "Next.js · TypeScript · Tailwind CSS",
+    description:
+      "My own personal portfolio website — the one you're looking at right now.",
+    blocks: [],
+    code: "https://github.com/Mosssi/Briwebsite.git",
+    externalOnly: true,
+  },
 
   {
     slug: "hss",
@@ -189,7 +281,8 @@ export const projects: Project[] = [
     ],
     live: "https://rebuildhss.netlify.app/",
     code: "https://github.com/Mosssi/rebuildHss.git",
-    figma:"https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=0-1"
+    figma:
+      "https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=0-1",
   },
 
   {
@@ -223,7 +316,8 @@ export const projects: Project[] = [
     ],
     live: "https://group-zoo-assignment.vercel.app",
     code: "https://github.com/Callum-Jones230893/Group-zoo-assignment",
-    figma:"https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=0-1"
+    figma:
+      "https://www.figma.com/design/dLpaMEUu6033VVmcXlaIJ7/Brianna--Portfolio-DESIGN?node-id=0-1",
   },
 
   {
@@ -288,32 +382,24 @@ export const projects: Project[] = [
     ],
   },
 
-
- 
-
-
-
-{
-  slug: "tarot",
-  title: "Tarot App",
-  cover: "/projects/tarot/01.png",   
-  tech: "React · MUI",
-  description: "A tarot card reading app built with React and Material UI.",
-  blocks: [],
-  code: "https://github.com/Mosssi/Tarot--MUI.git",
-  externalOnly: true,
-},
-{
-  slug: "study-checkin",
-  title: "Study Check-in — Jest Testing",
-  cover: "/projects/checkin/01.png", 
-  tech: "JavaScript · Jest",
-  description: "A class assignment focused on writing unit tests with Jest.",
-  blocks: [],
-  code: "https://github.com/Mosssi/study-checkin.git",
-  externalOnly: true,
-},
+  {
+    slug: "tarot",
+    title: "Tarot App",
+    cover: "/projects/tarot/01.png",
+    tech: "React · MUI",
+    description: "A tarot card reading app built with React and Material UI.",
+    blocks: [],
+    code: "https://github.com/Mosssi/Tarot--MUI.git",
+    externalOnly: true,
+  },
+  {
+    slug: "study-checkin",
+    title: "Study Check-in — Jest Testing",
+    cover: "/projects/checkin/01.png",
+    tech: "JavaScript · Jest",
+    description: "A class assignment focused on writing unit tests with Jest.",
+    blocks: [],
+    code: "https://github.com/Mosssi/study-checkin.git",
+    externalOnly: true,
+  },
 ];
-
-
-

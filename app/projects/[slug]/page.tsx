@@ -35,13 +35,19 @@ export default async function ProjectPage({
       {(project.live || project.code || project.figma) && (
         <div className="mb-12 flex flex-wrap gap-3">
           {project.live && (
-            <LinkButton href={project.live} external>Live</LinkButton>
+            <LinkButton href={project.live} external>
+              Live
+            </LinkButton>
           )}
           {project.code && (
-            <LinkButton href={project.code} external>Code</LinkButton>
+            <LinkButton href={project.code} external>
+              Code
+            </LinkButton>
           )}
           {project.figma && (
-            <LinkButton href={project.figma} external>Figma</LinkButton>
+            <LinkButton href={project.figma} external>
+              Figma
+            </LinkButton>
           )}
         </div>
       )}
@@ -50,8 +56,13 @@ export default async function ProjectPage({
         {project.blocks.map((block, i) => {
           if (block.type === "section") {
             return (
-              <div key={i} className="flex items-baseline gap-3 border-t border-gray-800 pt-10">
-                <span className="font-mono text-sm text-accent">{block.number}</span>
+              <div
+                key={i}
+                className="flex items-baseline gap-3 border-t border-gray-800 pt-10"
+              >
+                <span className="font-mono text-sm text-accent">
+                  {block.number}
+                </span>
                 <h2 className="font-mono text-xl font-semibold uppercase tracking-wide text-white">
                   {block.title}
                 </h2>
@@ -107,11 +118,29 @@ export default async function ProjectPage({
             const isPhone = block.size === "phone";
             return (
               <figure key={i} className={isPhone ? "mx-auto" : "bg-black"}>
-                <img 
-                src={block.src} 
-                alt={project.title} 
-                className="w-full" 
-                />
+                <img src={block.src} alt={project.title} className="w-full" />
+                {block.caption && (
+                  <figcaption className="mt-2 text-center font-mono text-xs uppercase tracking-wide text-gray-500">
+                    {block.caption}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          }
+
+          if (block.type === "video") {
+            return (
+              <figure key={i}>
+                <div className="aspect-video w-full overflow-hidden border border-gray-700">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${block.youtubeId}`}
+                    title={block.caption ?? "Video"}
+                    className="h-full w-full"
+                    loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
                 {block.caption && (
                   <figcaption className="mt-2 text-center font-mono text-xs uppercase tracking-wide text-gray-500">
                     {block.caption}

@@ -46,7 +46,7 @@ export default function Hero() {
 
       <p className="mb-8 min-h-[1.6em] font-mono text-accent">
         <Typewriter
-          text="UI/UX Designer & Frontend Developer"
+          text="Frontend Developer & Designer"
           speed={55}
           start={nameDone}
         />
